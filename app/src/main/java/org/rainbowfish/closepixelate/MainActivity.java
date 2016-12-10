@@ -1,3 +1,17 @@
+/*
+ * Close Pixelate for Android
+ * based on http://desandro.com/resources/close-pixelate/
+ *
+ * Developed by
+ * - David DeSandro  http://desandro.com
+ * - John Schulz  http://twitter.com/jfsiii
+ *
+ * Android port by
+ * - Boris Maslakov
+ *
+ * Licensed under MIT license
+ */
+
 package org.rainbowfish.closepixelate;
 
 import android.content.Context;
@@ -8,8 +22,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;

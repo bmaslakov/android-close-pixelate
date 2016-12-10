@@ -1,3 +1,17 @@
+/*
+ * Close Pixelate for Android
+ * based on http://desandro.com/resources/close-pixelate/
+ *
+ * Developed by
+ * - David DeSandro  http://desandro.com
+ * - John Schulz  http://twitter.com/jfsiii
+ *
+ * Android port by
+ * - Boris Maslakov
+ *
+ * Licensed under MIT license
+ */
+
 package org.rainbowfish.closepixelate;
 
 import android.graphics.Bitmap;
@@ -70,9 +84,21 @@ public class ClosePixelate {
         } // row
     }
 
+    /**
+     * Returns the color of the cluster. If options.enableDominantColor is true, return the
+     * dominant color around the provided point. Return the color of the point itself otherwise.
+     * The dominant color algorithm is based on simple counting search, so use with caution.
+     *
+     * @param pixels the bitmap
+     * @param pixelX the x coordinate of the reference point
+     * @param pixelY the y coordinate of the reference point
+     * @param opts additional options
+     * @return the color of the cluster
+     */
     private static int getDominantColor(Bitmap pixels, int pixelX, int pixelY, Options opts) {
         int pixel = pixels.getPixel(pixelX, pixelY);
         if (opts.enableDominantColor) {
+            // TODO: optimise dominant color algorithm
             Map<Integer, Integer> colorCounter = new HashMap<>(100);
             for (int x = (int) Math.max(0, pixelX - opts.resolution); x < Math.min(pixels.getWidth(), pixelX + opts.resolution); x++) {
                 for (int y = (int) Math.max(0, pixelY - opts.resolution); y < Math.min(pixels.getHeight(), pixelY + opts.resolution); y++) {
