@@ -23,8 +23,16 @@ public class Options {
     float offsetY = 0;
     Shape shape;
 
+    private Options(Shape shape) {
+        this.shape = shape;
+    }
+
     public static class Builder {
-        private Options options = new Options();
+        private final Options options;
+
+        public Builder(Shape shape) {
+            options = new Options(shape);
+        }
 
         public Builder setResolution(float resolution) {
             options.resolution = resolution;

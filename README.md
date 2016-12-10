@@ -10,20 +10,17 @@ This is the android port of https://github.com/desandro/close-pixelate.
 
 ```
 ClosePixelate.render(bitmap,
-        new Options.Builder()
+        new Options.Builder(Shape.Diamond)
                 .setResolution(48)
                 .setSize(50)
-                .setShape(Shape.Diamond)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Diamond)
                 .setResolution(48)
                 .setOffset(24)
-                .setShape(Shape.Diamond)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Circle)
                 .setResolution(8)
                 .setSize(6)
-                .setShape(Shape.Circle)
                 .build());
 ```
 
@@ -31,32 +28,27 @@ ClosePixelate.render(bitmap,
 
 ```
 ClosePixelate.render(bitmap,
-        new Options.Builder()
+        new Options.Builder(Shape.Square)
                 .setResolution(32)
-                .setShape(Shape.Square)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Circle)
                 .setResolution(32)
                 .setOffset(15)
-                .setShape(Shape.Circle)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Circle)
                 .setResolution(32)
                 .setSize(26)
                 .setOffset(13)
-                .setShape(Shape.Circle)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Circle)
                 .setResolution(32)
                 .setSize(18)
                 .setOffset(10)
-                .setShape(Shape.Circle)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Circle)
                 .setResolution(32)
                 .setSize(12)
                 .setOffset(8)
-                .setShape(Shape.Circle)
                 .build());
 ```
 
@@ -64,27 +56,23 @@ ClosePixelate.render(bitmap,
 
 ```
 ClosePixelate.render(bitmap,
-        new Options.Builder()
+        new Options.Builder(Shape.Square)
                 .setResolution(48)
-                .setShape(Shape.Square)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Diamond)
                 .setResolution(48)
                 .setOffset(12)
                 .setAlpha(0.5f)
-                .setShape(Shape.Diamond)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Diamond)
                 .setResolution(48)
                 .setOffset(36)
                 .setAlpha(0.5f)
-                .setShape(Shape.Diamond)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Circle)
                 .setResolution(16)
                 .setSize(8)
                 .setOffset(4)
-                .setShape(Shape.Circle)
                 .build());
 ```
 
@@ -92,29 +80,25 @@ ClosePixelate.render(bitmap,
 
 ```
 ClosePixelate.render(bitmap,
-        new Options.Builder()
+        new Options.Builder(Shape.Circle)
                 .setResolution(32)
                 .setSize(6)
                 .setOffset(8)
-                .setShape(Shape.Circle)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Circle)
                 .setResolution(32)
                 .setSize(9)
                 .setOffset(16)
-                .setShape(Shape.Circle)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Circle)
                 .setResolution(32)
                 .setSize(12)
                 .setOffset(24)
-                .setShape(Shape.Circle)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Circle)
                 .setResolution(32)
                 .setSize(9)
                 .setOffset(0)
-                .setShape(Shape.Circle)
                 .build());
 ```
 
@@ -122,20 +106,17 @@ ClosePixelate.render(bitmap,
 
 ```
 ClosePixelate.render(bitmap,
-        new Options.Builder()
+        new Options.Builder(Shape.Diamond)
                 .setResolution(24)
                 .setSize(25)
-                .setShape(Shape.Diamond)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Diamond)
                 .setResolution(24)
                 .setOffset(12)
-                .setShape(Shape.Diamond)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Square)
                 .setResolution(24)
                 .setAlpha(0.6f)
-                .setShape(Shape.Square)
                 .build());
 ```
 
@@ -143,27 +124,23 @@ ClosePixelate.render(bitmap,
 
 ```
 ClosePixelate.render(bitmap,
-        new Options.Builder()
+        new Options.Builder(Shape.Square)
                 .setResolution(32)
-                .setShape(Shape.Square)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Circle)
                 .setResolution(32)
                 .setOffset(16)
-                .setShape(Shape.Circle)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Circle)
                 .setResolution(32)
                 .setOffset(0)
                 .setAlpha(0.5f)
-                .setShape(Shape.Circle)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Circle)
                 .setResolution(16)
                 .setSize(9)
                 .setOffset(0)
                 .setAlpha(0.5f)
-                .setShape(Shape.Circle)
                 .build());
 ```
 
@@ -171,15 +148,13 @@ ClosePixelate.render(bitmap,
 
 ```
 ClosePixelate.render(bitmap,
-        new Options.Builder()
+        new Options.Builder(Shape.Circle)
                 .setResolution(24)
-                .setShape(Shape.Circle)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Circle)
                 .setResolution(24)
                 .setSize(9)
                 .setOffset(12)
-                .setShape(Shape.Circle)
                 .build());
 ```
 
@@ -187,29 +162,25 @@ ClosePixelate.render(bitmap,
 
 ```
 ClosePixelate.render(bitmap,
-        new Options.Builder()
+        new Options.Builder(Shape.Square)
                 .setResolution(48)
                 .setOffset(24)
-                .setShape(Shape.Square)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Circle)
                 .setResolution(48)
                 .setOffset(0)
-                .setShape(Shape.Circle)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Diamond)
                 .setResolution(16)
                 .setSize(15)
                 .setOffset(0)
                 .setAlpha(0.6f)
-                .setShape(Shape.Diamond)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Diamond)
                 .setResolution(16)
                 .setSize(15)
                 .setOffset(8)
                 .setAlpha(0.6f)
-                .setShape(Shape.Diamond)
                 .build());
 ```
 
@@ -217,19 +188,16 @@ ClosePixelate.render(bitmap,
 
 ```
 ClosePixelate.render(bitmap,
-        new Options.Builder()
+        new Options.Builder(Shape.Square)
                 .setResolution(48)
-                .setShape(Shape.Square)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Diamond)
                 .setResolution(12)
                 .setSize(8)
-                .setShape(Shape.Diamond)
                 .build(),
-        new Options.Builder()
+        new Options.Builder(Shape.Diamond)
                 .setResolution(12)
                 .setSize(8)
                 .setOffset(6)
-                .setShape(Shape.Diamond)
                 .build());
 ```
