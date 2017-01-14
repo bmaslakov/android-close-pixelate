@@ -42,6 +42,7 @@ public class ClosePixelate {
         int h = data.getHeight();
         Canvas canvas = new Canvas(out);
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG);
+        paint.setColorFilter(opts.colorFilter);
 
         // option defaults
         float size = opts.size == null ? opts.resolution : opts.size;
@@ -63,7 +64,7 @@ public class ClosePixelate {
                 // normalize y so shapes around edges get color
                 float pixelX = Math.max(Math.min(x, w - 1), 0);
 
-                paint.setColor(getDominantColor(data, (int) pixelX, (int) pixelY, opts));
+                paint.setColor(getPixelColor(data, (int) pixelX, (int) pixelY, opts));
 
                 switch (opts.shape) {
                     case Circle:
@@ -95,7 +96,7 @@ public class ClosePixelate {
      * @param opts additional options
      * @return the color of the cluster
      */
-    private static int getDominantColor(Bitmap pixels, int pixelX, int pixelY, Options opts) {
+    private static int getPixelColor(Bitmap pixels, int pixelX, int pixelY, Options opts) {
         int pixel = pixels.getPixel(pixelX, pixelY);
         if (opts.enableDominantColor) {
             // TODO: optimise dominant color algorithm

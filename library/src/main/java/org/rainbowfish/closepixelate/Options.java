@@ -14,8 +14,11 @@
 
 package org.rainbowfish.closepixelate;
 
+import android.graphics.ColorFilter;
+
 public class Options {
     boolean enableDominantColor;
+    ColorFilter colorFilter;
     float resolution = 16;
     Float size;
     float alpha = 1;
@@ -62,6 +65,11 @@ public class Options {
 
         public Builder setEnableDominantColors(boolean enable) {
             options.enableDominantColor = enable;
+            return this;
+        }
+
+        public Builder setColorFilter(ColorFilter colorFilter) {
+            options.colorFilter = colorFilter;
             return this;
         }
 
