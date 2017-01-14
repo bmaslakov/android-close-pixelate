@@ -25,6 +25,12 @@ import java.util.Map;
 public class Pixelate {
     private final static float SQRT2 = (float) Math.sqrt(2);
 
+    public static Bitmap render(Bitmap bitmap, PixelateLayer... layers) {
+        Bitmap out = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        render(bitmap, out, layers);
+        return out;
+    }
+
     public static void render(Bitmap bitmap, Bitmap target, PixelateLayer... layers) {
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG);
         render(new Canvas(target), target.getWidth(), target.getHeight(), paint, bitmap, layers);

@@ -114,7 +114,7 @@ public class PixelateDrawable extends Drawable {
         return mBitmap;
     }
 
-    public void setOptions(@NonNull PixelateLayer... layers) {
+    public void setLayers(@NonNull PixelateLayer... layers) {
         if (mLayers != layers) {
             mLayers = layers;
             invalidateSelf();
