@@ -1,3 +1,17 @@
+/*
+ * Close Pixelate for Android
+ * based on http://desandro.com/resources/close-pixelate/
+ *
+ * Developed by
+ * - David DeSandro  http://desandro.com
+ * - John Schulz  http://twitter.com/jfsiii
+ *
+ * Android port by
+ * - Boris Maslakov
+ *
+ * Licensed under MIT license
+ */
+
 package org.rainbowfish.closepixelate;
 
 import android.graphics.Bitmap;
@@ -9,33 +23,32 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-public class ClosePixelateDrawable extends Drawable {
+public class PixelateDrawable extends Drawable {
     @Nullable
     private Bitmap mBitmap;
     @NonNull
     private Paint mPaint;
     @NonNull
-    private Options[] mOptions;
+    private PixelateLayer[] mLayers;
 
     // These are scaled to match the target density.
     private int mBitmapWidth;
     private int mBitmapHeight;
 
-    public ClosePixelateDrawable() {
+    public PixelateDrawable() {
         this(null);
     }
 
-    public ClosePixelateDrawable(@Nullable Bitmap bitmap, @NonNull Options... options) {
+    public PixelateDrawable(@Nullable Bitmap bitmap, @NonNull PixelateLayer... layers) {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG);
         setBitmap(bitmap);
-        mOptions = options;
+        mLayers = layers;
     }
 
     @Override
     public void draw(@NonNull Canvas canvas) {
         if (mBitmap != null) {
-            ClosePixelate.renderClosePixels(canvas,
-                    mBitmapWidth, mBitmapHeight, mPaint, mBitmap, mOptions);
+            Pixelate.render(canvas, mBitmapWidth, mBitmapHeight, mPaint, mBitmap, mLayers);
         }
     }
 
@@ -54,7 +67,7 @@ public class ClosePixelateDrawable extends Drawable {
     }
 
     @Override
-    public void setColorFilter(ColorFilter colorFilter) {
+    public void setColorFilter(@Nullable ColorFilter colorFilter) {
         ColorFilter oldColorFilter = mPaint.getColorFilter();
         if (colorFilter != oldColorFilter) {
             mPaint.setColorFilter(colorFilter);
@@ -101,9 +114,9 @@ public class ClosePixelateDrawable extends Drawable {
         return mBitmap;
     }
 
-    public void setOptions(@NonNull Options[] options) {
-        if (mOptions != options) {
-            mOptions = options;
+    public void setOptions(@NonNull PixelateLayer... layers) {
+        if (mLayers != layers) {
+            mLayers = layers;
             invalidateSelf();
         }
     }

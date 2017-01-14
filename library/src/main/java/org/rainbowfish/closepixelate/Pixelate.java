@@ -22,38 +22,28 @@ import android.graphics.Paint;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ClosePixelate {
+public class Pixelate {
     private final static float SQRT2 = (float) Math.sqrt(2);
 
-    public static void render(Bitmap bitmap, Bitmap target, Options... opts) {
-        renderClosePixels(target, bitmap, opts);
-    }
-
-    public static Bitmap render(Bitmap bitmap, Options... opts) {
-        Bitmap target = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
-        render(bitmap, target, opts);
-        return target;
-    }
-
-    private static void renderClosePixels(Bitmap out, Bitmap data, Options... opts) {
+    public static void render(Bitmap bitmap, Bitmap target, PixelateLayer... layers) {
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG);
-        renderClosePixels(new Canvas(out), out.getWidth(), out.getHeight(), paint, data, opts);
+        render(new Canvas(target), target.getWidth(), target.getHeight(), paint, bitmap, layers);
     }
 
-    static void renderClosePixels(Canvas canvas, int width, int height, Paint paint, Bitmap data, Options... opts) {
-        for (Options option : opts) {
-            renderClosePixels(canvas, width, height, paint, data, option);
+    static void render(Canvas canvas, int width, int height, Paint paint, Bitmap data, PixelateLayer... layers) {
+        for (PixelateLayer layer : layers) {
+            render(canvas, width, height, paint, data, layer);
         }
     }
 
-    static void renderClosePixels(Canvas canvas, int width, int height, Paint paint, Bitmap data, Options opts) {
+    static void render(Canvas canvas, int width, int height, Paint paint, Bitmap data, PixelateLayer layer) {
         int w = data.getWidth();
         int h = data.getHeight();
 
         // option defaults
-        float size = opts.size == null ? opts.resolution : opts.size;
-        int cols = (int) (w / opts.resolution + 1);
-        int rows = (int) (h / opts.resolution + 1);
+        float size = layer.size == null ? layer.resolution : layer.size;
+        int cols = (int) (w / layer.resolution + 1);
+        int rows = (int) (h / layer.resolution + 1);
         float halfSize = size / 2f;
         float diamondSize = size / SQRT2;
         float halfDiamondSize = diamondSize / 2f;
@@ -61,18 +51,18 @@ public class ClosePixelate {
         canvas.scale(((float) width) / data.getWidth(), ((float) height) / data.getHeight());
 
         for (int row = 0; row < rows; row++ ) {
-            float y = (row - 0.5f) * opts.resolution + opts.offsetY;
+            float y = (row - 0.5f) * layer.resolution + layer.offsetY;
             // normalize y so shapes around edges get color
             float pixelY = Math.max(Math.min(y, h - 1), 0);
 
             for (int col = 0; col < cols; col++ ) {
-                float x = (col - 0.5f) * opts.resolution + opts.offsetX;
+                float x = (col - 0.5f) * layer.resolution + layer.offsetX;
                 // normalize y so shapes around edges get color
                 float pixelX = Math.max(Math.min(x, w - 1), 0);
 
-                paint.setColor(getPixelColor(data, (int) pixelX, (int) pixelY, opts));
+                paint.setColor(getPixelColor(data, (int) pixelX, (int) pixelY, layer));
 
-                switch (opts.shape) {
+                switch (layer.shape) {
                     case Circle:
                         canvas.drawCircle(x, y, halfSize, paint);
                         break;
@@ -102,7 +92,7 @@ public class ClosePixelate {
      * @param opts additional options
      * @return the color of the cluster
      */
-    private static int getPixelColor(Bitmap pixels, int pixelX, int pixelY, Options opts) {
+    private static int getPixelColor(Bitmap pixels, int pixelX, int pixelY, PixelateLayer opts) {
         int pixel = pixels.getPixel(pixelX, pixelY);
         if (opts.enableDominantColor) {
             // TODO: optimise dominant color algorithm

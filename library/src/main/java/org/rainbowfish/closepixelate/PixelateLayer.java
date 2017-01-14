@@ -16,7 +16,7 @@ package org.rainbowfish.closepixelate;
 
 import android.graphics.ColorFilter;
 
-public class Options {
+public class PixelateLayer {
     boolean enableDominantColor;
     ColorFilter colorFilter;
     float resolution = 16;
@@ -26,55 +26,59 @@ public class Options {
     float offsetY = 0;
     Shape shape;
 
-    private Options(Shape shape) {
+    private PixelateLayer(Shape shape) {
         this.shape = shape;
     }
 
     public static class Builder {
-        private final Options options;
+        private final PixelateLayer layer;
 
         public Builder(Shape shape) {
-            options = new Options(shape);
+            layer = new PixelateLayer(shape);
         }
 
         public Builder setResolution(float resolution) {
-            options.resolution = resolution;
+            layer.resolution = resolution;
             return this;
         }
 
         public Builder setSize(float size) {
-            options.size = size;
+            layer.size = size;
             return this;
         }
 
         public Builder setOffset(float size) {
-            options.offsetX = size;
-            options.offsetY = size;
+            layer.offsetX = size;
+            layer.offsetY = size;
             return this;
         }
 
         public Builder setShape(Shape shape) {
-            options.shape = shape;
+            layer.shape = shape;
             return this;
         }
 
         public Builder setAlpha(float alpha) {
-            options.alpha = alpha;
+            layer.alpha = alpha;
             return this;
         }
 
         public Builder setEnableDominantColors(boolean enable) {
-            options.enableDominantColor = enable;
+            layer.enableDominantColor = enable;
             return this;
         }
 
         public Builder setColorFilter(ColorFilter colorFilter) {
-            options.colorFilter = colorFilter;
+            layer.colorFilter = colorFilter;
             return this;
         }
 
-        public Options build() {
-            return options;
+        public PixelateLayer build() {
+            return layer;
         }
+    }
+
+    public enum Shape {
+        Circle, Diamond, Square
     }
 }
