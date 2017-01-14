@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("org.rainbowfish.closepixelate", appContext.getPackageName());
+        assertEquals("org.rainbowfish.closepixelate.test", appContext.getPackageName());
     }
 }

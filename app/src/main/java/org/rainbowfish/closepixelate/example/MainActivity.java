@@ -12,7 +12,7 @@
  * Licensed under MIT license
  */
 
-package org.rainbowfish.closepixelate;
+package org.rainbowfish.closepixelate.example;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -27,6 +27,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+
+import org.rainbowfish.closepixelate.ClosePixelate;
+import org.rainbowfish.closepixelate.Options;
+import org.rainbowfish.closepixelate.Shape;
 
 import java.io.IOException;
 import java.io.InputStream;
