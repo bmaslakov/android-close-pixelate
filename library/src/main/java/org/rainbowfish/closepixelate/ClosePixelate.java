@@ -26,9 +26,7 @@ public class ClosePixelate {
     private final static float SQRT2 = (float) Math.sqrt(2);
 
     public static void render(Bitmap bitmap, Bitmap target, Options... opts) {
-        for (Options options : opts) {
-            renderClosePixels(target, bitmap, options);
-        }
+        renderClosePixels(target, bitmap, opts);
     }
 
     public static Bitmap render(Bitmap bitmap, Options... opts) {
@@ -37,12 +35,20 @@ public class ClosePixelate {
         return target;
     }
 
-    private static void renderClosePixels(Bitmap out, Bitmap data, Options opts) {
+    private static void renderClosePixels(Bitmap out, Bitmap data, Options... opts) {
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG);
+        renderClosePixels(new Canvas(out), out.getWidth(), out.getHeight(), paint, data, opts);
+    }
+
+    static void renderClosePixels(Canvas canvas, int width, int height, Paint paint, Bitmap data, Options... opts) {
+        for (Options option : opts) {
+            renderClosePixels(canvas, width, height, paint, data, option);
+        }
+    }
+
+    static void renderClosePixels(Canvas canvas, int width, int height, Paint paint, Bitmap data, Options opts) {
         int w = data.getWidth();
         int h = data.getHeight();
-        Canvas canvas = new Canvas(out);
-        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG);
-        paint.setColorFilter(opts.colorFilter);
 
         // option defaults
         float size = opts.size == null ? opts.resolution : opts.size;
@@ -52,7 +58,7 @@ public class ClosePixelate {
         float diamondSize = size / SQRT2;
         float halfDiamondSize = diamondSize / 2f;
 
-        canvas.scale(((float) out.getWidth()) / data.getWidth(), ((float) out.getHeight()) / data.getHeight());
+        canvas.scale(((float) width) / data.getWidth(), ((float) height) / data.getHeight());
 
         for (int row = 0; row < rows; row++ ) {
             float y = (row - 0.5f) * opts.resolution + opts.offsetY;

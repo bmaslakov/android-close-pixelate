@@ -17,10 +17,8 @@ package org.rainbowfish.closepixelate.example;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -28,7 +26,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
-import org.rainbowfish.closepixelate.ClosePixelate;
+import org.rainbowfish.closepixelate.ClosePixelateDrawable;
 import org.rainbowfish.closepixelate.Options;
 import org.rainbowfish.closepixelate.Shape;
 
@@ -75,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void recycle() {
         if (imageView.getDrawable() != null) {
-            if (imageView.getDrawable() instanceof BitmapDrawable) {
-                Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+            if (imageView.getDrawable() instanceof ClosePixelateDrawable) {
+                Bitmap bitmap = ((ClosePixelateDrawable) imageView.getDrawable()).getBitmap();
                 imageView.setImageBitmap(null);
                 if (bitmap != null && !bitmap.isRecycled()) {
                     bitmap.recycle();
@@ -87,12 +85,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void select(int index) {
         recycle();
-        Bitmap bitmap, out;
         switch (index) {
             case 1:
-                bitmap = getBitmapFromAsset(this, "officer.jpg");
-                out = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-                ClosePixelate.render(bitmap, out,
+                imageView.setImageDrawable(new ClosePixelateDrawable(
+                        getBitmapFromAsset(this, "officer.jpg"),
                         new Options.Builder(Shape.Diamond)
                                 .setResolution(48)
                                 .setSize(50)
@@ -104,13 +100,13 @@ public class MainActivity extends AppCompatActivity {
                         new Options.Builder(Shape.Circle)
                                 .setResolution(8)
                                 .setSize(6)
-                                .build());
+                                .build()
+                ));
                 break;
 
             case 2:
-                bitmap = getBitmapFromAsset(this, "stanley.jpg");
-                out = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-                ClosePixelate.render(bitmap, out,
+                imageView.setImageDrawable(new ClosePixelateDrawable(
+                        getBitmapFromAsset(this, "stanley.jpg"),
                         new Options.Builder(Shape.Square)
                                 .setResolution(32)
                                 .build(),
@@ -132,13 +128,13 @@ public class MainActivity extends AppCompatActivity {
                                 .setResolution(32)
                                 .setSize(12)
                                 .setOffset(8)
-                                .build());
+                                .build()
+                ));
                 break;
 
             case 3:
-                bitmap = getBitmapFromAsset(this, "take-my-portrait.jpg");
-                out = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-                ClosePixelate.render(bitmap, out,
+                imageView.setImageDrawable(new ClosePixelateDrawable(
+                        getBitmapFromAsset(this, "take-my-portrait.jpg"),
                         new Options.Builder(Shape.Square)
                                 .setResolution(48)
                                 .build(),
@@ -156,13 +152,13 @@ public class MainActivity extends AppCompatActivity {
                                 .setResolution(16)
                                 .setSize(8)
                                 .setOffset(4)
-                                .build());
+                                .build()
+                ));
                 break;
 
             case 4:
-                bitmap = getBitmapFromAsset(this, "tony.jpg");
-                out = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Config.ARGB_8888);
-                ClosePixelate.render(bitmap, out,
+                imageView.setImageDrawable(new ClosePixelateDrawable(
+                        getBitmapFromAsset(this, "tony.jpg"),
                         new Options.Builder(Shape.Circle)
                                 .setResolution(32)
                                 .setSize(6)
@@ -182,13 +178,13 @@ public class MainActivity extends AppCompatActivity {
                                 .setResolution(32)
                                 .setSize(9)
                                 .setOffset(0)
-                                .build());
+                                .build()
+                ));
                 break;
 
             case 5:
-                bitmap = getBitmapFromAsset(this, "wonder.jpg");
-                out = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-                ClosePixelate.render(bitmap, out,
+                imageView.setImageDrawable(new ClosePixelateDrawable(
+                        getBitmapFromAsset(this, "wonder.jpg"),
                         new Options.Builder(Shape.Diamond)
                                 .setResolution(24)
                                 .setSize(25)
@@ -200,13 +196,13 @@ public class MainActivity extends AppCompatActivity {
                         new Options.Builder(Shape.Square)
                                 .setResolution(24)
                                 .setAlpha(0.6f)
-                                .build());
+                                .build()
+                ));
                 break;
 
             case 6:
-                bitmap = getBitmapFromAsset(this, "anita.jpg");
-                out = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-                ClosePixelate.render(bitmap, out,
+                imageView.setImageDrawable(new ClosePixelateDrawable(
+                        getBitmapFromAsset(this, "anita.jpg"),
                         new Options.Builder(Shape.Square)
                                 .setResolution(32)
                                 .build(),
@@ -224,13 +220,13 @@ public class MainActivity extends AppCompatActivity {
                                 .setSize(9)
                                 .setOffset(0)
                                 .setAlpha(0.5f)
-                                .build());
+                                .build()
+                ));
                 break;
 
             case 7:
-                bitmap = getBitmapFromAsset(this, "giraffe.jpg");
-                out = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Config.ARGB_8888);
-                ClosePixelate.render(bitmap, out,
+                imageView.setImageDrawable(new ClosePixelateDrawable(
+                        getBitmapFromAsset(this, "giraffe.jpg"),
                         new Options.Builder(Shape.Circle)
                                 .setResolution(24)
                                 .build(),
@@ -238,13 +234,13 @@ public class MainActivity extends AppCompatActivity {
                                 .setResolution(24)
                                 .setSize(9)
                                 .setOffset(12)
-                                .build());
+                                .build()
+                ));
                 break;
 
             case 8:
-                bitmap = getBitmapFromAsset(this, "kendra.jpg");
-                out = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-                ClosePixelate.render(bitmap, out,
+                imageView.setImageDrawable(new ClosePixelateDrawable(
+                        getBitmapFromAsset(this, "kendra.jpg"),
                         new Options.Builder(Shape.Square)
                                 .setResolution(48)
                                 .setOffset(24)
@@ -264,13 +260,13 @@ public class MainActivity extends AppCompatActivity {
                                 .setSize(15)
                                 .setOffset(8)
                                 .setAlpha(0.6f)
-                                .build());
+                                .build()
+                ));
                 break;
 
             case 9:
-                bitmap = getBitmapFromAsset(this, "gavin.jpg");
-                out = bitmap.copy(Bitmap.Config.ARGB_8888, true);
-                ClosePixelate.render(bitmap, out,
+                imageView.setImageDrawable(new ClosePixelateDrawable(
+                        getBitmapFromAsset(this, "gavin.jpg"),
                         new Options.Builder(Shape.Square)
                                 .setResolution(48)
                                 .build(),
@@ -282,14 +278,13 @@ public class MainActivity extends AppCompatActivity {
                                 .setResolution(12)
                                 .setSize(8)
                                 .setOffset(6)
-                                .build());
+                                .build()
+                ));
                 break;
 
             default:
                 return;
         }
-        imageView.setImageBitmap(out);
-        bitmap.recycle();
 
     }
 
