@@ -4,6 +4,41 @@ This is the android port of https://github.com/desandro/close-pixelate.
 
 [**close-pixelate.desandro.com**](http://close-pixelate.desandro.com)
 
+## Download
+
+The library is available at jcenter:
+
+```
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.rainbowfish:close-pixelate:1.0.0'
+}
+```
+
+## Usage
+
+Easiest way to use the library is to wrap plain old `Bitmap` into
+[`PixelateDrawable`](close-pixelate/src/main/java/org/rainbowfish/closepixelate/PixelateDrawable.java)
+and provide it with required layers:
+
+```
+PixelateDrawable drawable = new PixelateDrawable(
+        bitmap,
+        new PixelateLayer.Builder(PixelateLayer.Shape.Square)
+                .setResolution(48)
+                .setSize(50)
+                .build()
+));
+imageView.setImageDrawable(drawable);
+```
+
+You can also create pixelated bitmaps and draw directly on the canvas.
+Check out convenience methods in
+[`Pixelate`](close-pixelate/src/main/java/org/rainbowfish/closepixelate/Pixelate.java).
+
 ## Examples
 
 ![Officer](screenshots/officer.jpg?raw=true)
