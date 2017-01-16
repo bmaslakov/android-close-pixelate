@@ -8,7 +8,7 @@ This is the android port of https://github.com/desandro/close-pixelate.
 
 The library is available at jcenter:
 
-```
+```groovy
 repositories {
     jcenter()
 }
@@ -24,7 +24,7 @@ Easiest way to use the library is to wrap plain old `Bitmap` into
 [`PixelateDrawable`](close-pixelate/src/main/java/org/rainbowfish/closepixelate/PixelateDrawable.java)
 and provide it with required layers:
 
-```
+```java
 PixelateDrawable drawable = new PixelateDrawable(
         bitmap,
         new PixelateLayer.Builder(PixelateLayer.Shape.Square)
@@ -43,7 +43,7 @@ Check out convenience methods in
 
 ![Officer](screenshots/officer.jpg?raw=true)
 
-```
+```java
 Pixelate.render(bitmap,
         new PixelateLayer.Builder(PixelateLayer.Shape.Diamond)
                 .setResolution(48)
@@ -61,7 +61,7 @@ Pixelate.render(bitmap,
 
 ![Stanley](screenshots/stanley.jpg?raw=true)
 
-```
+```java
 Pixelate.render(bitmap,
         new PixelateLayer.Builder(PixelateLayer.Shape.Square)
                 .setResolution(32)
@@ -89,7 +89,7 @@ Pixelate.render(bitmap,
 
 ![Take my portrait](screenshots/take-my-portrait.jpg?raw=true)
 
-```
+```java
 Pixelate.render(bitmap,
         new PixelateLayer.Builder(PixelateLayer.Shape.Square)
                 .setResolution(48)
@@ -113,7 +113,7 @@ Pixelate.render(bitmap,
 
 ![Tony](screenshots/tony.jpg?raw=true)
 
-```
+```java
 Pixelate.render(bitmap,
         new PixelateLayer.Builder(PixelateLayer.Shape.Circle)
                 .setResolution(32)
@@ -139,7 +139,7 @@ Pixelate.render(bitmap,
 
 ![Wonder](screenshots/wonder.jpg?raw=true)
 
-```
+```java
 Pixelate.render(bitmap,
         new PixelateLayer.Builder(PixelateLayer.Shape.Diamond)
                 .setResolution(24)
@@ -157,7 +157,7 @@ Pixelate.render(bitmap,
 
 ![Anita](screenshots/anita.jpg?raw=true)
 
-```
+```java
 Pixelate.render(bitmap,
         new PixelateLayer.Builder(PixelateLayer.Shape.Square)
                 .setResolution(32)
@@ -181,7 +181,7 @@ Pixelate.render(bitmap,
 
 ![Giraffe](screenshots/giraffe.jpg?raw=true)
 
-```
+```java
 Pixelate.render(bitmap,
         new PixelateLayer.Builder(PixelateLayer.Shape.Circle)
                 .setResolution(24)
@@ -195,7 +195,7 @@ Pixelate.render(bitmap,
 
 ![Kendra](screenshots/kendra.jpg?raw=true)
 
-```
+```java
 Pixelate.render(bitmap,
         new PixelateLayer.Builder(PixelateLayer.Shape.Square)
                 .setResolution(48)
@@ -221,7 +221,7 @@ Pixelate.render(bitmap,
 
 ![Gavin](screenshots/gavin.jpg?raw=true)
 
-```
+```java
 Pixelate.render(bitmap,
         new PixelateLayer.Builder(PixelateLayer.Shape.Square)
                 .setResolution(48)
