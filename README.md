@@ -1,5 +1,8 @@
 # android-close-pixelate
 
+Android close pixelate allows you easily create and combine various pixelation effects.
+The library is super lightweight (3 classes, 8KB) and easy to use.
+
 This is the android port of https://github.com/desandro/close-pixelate.
 
 [**close-pixelate.desandro.com**](http://close-pixelate.desandro.com)
@@ -40,6 +43,20 @@ Check out convenience methods in
 [`Pixelate`](close-pixelate/src/main/java/org/rainbowfish/closepixelate/Pixelate.java).
 
 ## Examples
+
+Here are simple examples of single-layer configurations:
+
+|                                               |                                                                  |
+|-----------------------------------------------|------------------------------------------------------------------|
+| Original                                      | ![original](app/src/main/assets/jamie-hyneman.jpg?raw=true)      |
+| `resolution = 25, size = 25, shape = square`  | ![simple-hi-square](screenshots/simple-hi-square.png?raw=true)   |
+| `resolution = 10, size = 10, shape = square`  | ![simple-lo-square](screenshots/simple-lo-square.png?raw=true)   |
+| `resolution = 25, size = 25, shape = circle`  | ![simple-hi-circle](screenshots/simple-hi-circle.png?raw=true)   |
+| `resolution = 10, size = 10, shape = circle`  | ![simple-lo-circle](screenshots/simple-lo-circle.png?raw=true)   |
+| `resolution = 25, size = 25, shape = diamond` | ![simple-hi-diamond](screenshots/simple-hi-diamond.png?raw=true) |
+| `resolution = 10, size = 10, shape = diamond` | ![simple-lo-diamond](screenshots/simple-lo-diamond.png?raw=true) |
+
+Combining several layers, you can achieve more interesting effects:
 
 ![Officer](screenshots/officer.jpg?raw=true)
 
