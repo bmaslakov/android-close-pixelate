@@ -24,32 +24,22 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 public class PixelateDrawable extends Drawable {
-    @Nullable
-    private Bitmap mBitmap;
     @NonNull
-    private Paint mPaint;
+    private final Bitmap mBitmap;
     @NonNull
-    private PixelateLayer[] mLayers;
+    private final Paint mPaint;
+    @NonNull
+    private final PixelateLayer[] mLayers;
 
-    // These are scaled to match the target density.
-    private int mBitmapWidth;
-    private int mBitmapHeight;
-
-    public PixelateDrawable() {
-        this(null);
-    }
-
-    public PixelateDrawable(@Nullable Bitmap bitmap, @NonNull PixelateLayer... layers) {
+    public PixelateDrawable(@NonNull Bitmap bitmap, @NonNull PixelateLayer... layers) {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG);
-        setBitmap(bitmap);
+        mBitmap = bitmap;
         mLayers = layers;
     }
 
     @Override
     public void draw(@NonNull Canvas canvas) {
-        if (mBitmap != null) {
-            Pixelate.render(canvas, mBitmapWidth, mBitmapHeight, mPaint, mBitmap, mLayers);
-        }
+        Pixelate.render(canvas, mBitmap.getWidth(), mBitmap.getHeight(), mPaint, mBitmap, mLayers);
     }
 
     @Override
@@ -83,41 +73,28 @@ public class PixelateDrawable extends Drawable {
 
     @Override
     public int getIntrinsicWidth() {
-        return mBitmapWidth;
+        return mBitmap.getWidth();
     }
 
     @Override
     public int getIntrinsicHeight() {
-        return mBitmapHeight;
+        return mBitmap.getHeight();
     }
 
     @Override
     public int getOpacity() {
         Bitmap bm = mBitmap;
-        return (bm == null || bm.hasAlpha() || mPaint.getAlpha() < 255) ?
+        return (bm.hasAlpha() || mPaint.getAlpha() < 255) ?
                     PixelFormat.TRANSLUCENT : PixelFormat.OPAQUE;
     }
 
-    public void setBitmap(@Nullable Bitmap bitmap) {
-        if (mBitmap != bitmap) {
-            mBitmap = bitmap;
-            if (bitmap != null) {
-                mBitmapWidth = bitmap.getWidth();
-                mBitmapHeight = bitmap.getHeight();
-            }
-            invalidateSelf();
-        }
-    }
-
-    @Nullable
+    @NonNull
     public Bitmap getBitmap() {
         return mBitmap;
     }
 
-    public void setLayers(@NonNull PixelateLayer... layers) {
-        if (mLayers != layers) {
-            mLayers = layers;
-            invalidateSelf();
-        }
+    @NonNull
+    public PixelateLayer[] getLayers() {
+        return mLayers;
     }
 }
