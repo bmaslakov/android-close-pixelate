@@ -54,14 +54,16 @@ public class Pixelate {
         float diamondSize = size / SQRT2;
         float halfDiamondSize = diamondSize / 2f;
 
+        canvas.save();
+        canvas.clipRect(0, 0, width, height);
         canvas.scale(((float) width) / data.getWidth(), ((float) height) / data.getHeight());
 
-        for (int row = 0; row < rows; row++ ) {
+        for (int row = 0; row <= rows; row++ ) {
             float y = (row - 0.5f) * layer.resolution + layer.offsetY;
             // normalize y so shapes around edges get color
             float pixelY = Math.max(Math.min(y, h - 1), 0);
 
-            for (int col = 0; col < cols; col++ ) {
+            for (int col = 0; col <= cols; col++ ) {
                 float x = (col - 0.5f) * layer.resolution + layer.offsetX;
                 // normalize y so shapes around edges get color
                 float pixelX = Math.max(Math.min(x, w - 1), 0);
@@ -85,6 +87,8 @@ public class Pixelate {
                 } // switch
             } // col
         } // row
+
+        canvas.restore();
     }
 
     /**
