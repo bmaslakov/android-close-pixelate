@@ -14,37 +14,71 @@
 
 package org.rainbowfish.closepixelate;
 
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Pixelate {
     private final static float SQRT2 = (float) Math.sqrt(2);
 
-    public static Bitmap render(Bitmap bitmap, PixelateLayer... layers) {
-        Bitmap out = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
-        render(bitmap, out, layers);
+    public static Bitmap fromAsset(AssetManager assetManager, String path, PixelateLayer... layers) throws IOException {
+        return fromInputStream(assetManager.open(path), layers);
+    }
+
+    public static Bitmap fromAsset(AssetManager assetManager, String path, int outWidth, int outHeight, PixelateLayer... layers) throws IOException {
+        return fromInputStream(assetManager.open(path), outWidth, outHeight, layers);
+    }
+
+    public static Bitmap fromInputStream(InputStream inputStream, PixelateLayer... layers) throws IOException {
+        Bitmap in = BitmapFactory.decodeStream(inputStream);
+        inputStream.close();
+        Bitmap out = fromBitmap(in, layers);
+        in.recycle();
         return out;
     }
 
-    public static void render(Bitmap bitmap, Bitmap target, PixelateLayer... layers) {
-        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG);
-        render(new Canvas(target), target.getWidth(), target.getHeight(), paint, bitmap, layers);
+    public static Bitmap fromInputStream(InputStream inputStream, int outWidth, int outHeight, PixelateLayer... layers) throws IOException {
+        Bitmap in = BitmapFactory.decodeStream(inputStream);
+        inputStream.close();
+        Bitmap out = fromBitmap(in, outWidth, outHeight, layers);
+        in.recycle();
+        return out;
     }
 
-    static void render(Canvas canvas, int width, int height, Paint paint, Bitmap data, PixelateLayer... layers) {
+    public static Bitmap fromBitmap(Bitmap in, PixelateLayer... layers) {
+        Bitmap out = Bitmap.createBitmap(in.getWidth(), in.getHeight(), Bitmap.Config.ARGB_8888);
+        render(in, out, layers);
+        return out;
+    }
+
+    public static Bitmap fromBitmap(Bitmap in, int outWidth, int outHeight, PixelateLayer... layers) {
+        Bitmap out = Bitmap.createBitmap(outWidth, outHeight, Bitmap.Config.ARGB_8888);
+        render(in, out, layers);
+        return out;
+    }
+
+    public static void render(Bitmap in, Bitmap out, PixelateLayer... layers) {
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG | Paint.FILTER_BITMAP_FLAG);
+        render(in, new Canvas(out), out.getWidth(), out.getHeight(), paint, layers);
+    }
+
+    public static void render(Bitmap in, Canvas canvas, int outWidth, int outHeight, Paint paint, PixelateLayer... layers) {
         for (PixelateLayer layer : layers) {
-            render(canvas, width, height, paint, data, layer);
+            render(canvas, outWidth, outHeight, paint, in, layer);
         }
     }
 
-    static void render(Canvas canvas, int width, int height, Paint paint, Bitmap data, PixelateLayer layer) {
-        int w = data.getWidth();
-        int h = data.getHeight();
+    private static void render(Canvas canvas, int outWidth, int outHeight, Paint paint, Bitmap in, PixelateLayer layer) {
+        int w = in.getWidth();
+        int h = in.getHeight();
 
         // option defaults
         float size = layer.size == null ? layer.resolution : layer.size;
@@ -55,8 +89,8 @@ public class Pixelate {
         float halfDiamondSize = diamondSize / 2f;
 
         canvas.save();
-        canvas.clipRect(0, 0, width, height);
-        canvas.scale(((float) width) / data.getWidth(), ((float) height) / data.getHeight());
+        canvas.clipRect(0, 0, outWidth, outHeight);
+        canvas.scale(((float) outWidth) / in.getWidth(), ((float) outHeight) / in.getHeight());
 
         for (int row = 0; row <= rows; row++ ) {
             float y = (row - 0.5f) * layer.resolution + layer.offsetY;
@@ -68,7 +102,7 @@ public class Pixelate {
                 // normalize y so shapes around edges get color
                 float pixelX = Math.max(Math.min(x, w - 1), 0);
 
-                paint.setColor(getPixelColor(data, (int) pixelX, (int) pixelY, layer));
+                paint.setColor(getPixelColor(in, (int) pixelX, (int) pixelY, layer));
 
                 switch (layer.shape) {
                     case Circle:

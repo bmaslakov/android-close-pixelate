@@ -14,11 +14,9 @@
 
 package org.rainbowfish.closepixelate.example;
 
-import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -26,11 +24,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
-import org.rainbowfish.closepixelate.PixelateDrawable;
+import org.rainbowfish.closepixelate.Pixelate;
 import org.rainbowfish.closepixelate.PixelateLayer;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
     private ImageView imageView;
@@ -41,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         imageView = (ImageView) findViewById(R.id.imageView1);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
-        select(1);
     }
 
     @Override
@@ -60,7 +56,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        select(item.getItemId());
+        try {
+            select(item.getItemId());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return true;
     }
 
@@ -70,10 +70,20 @@ public class MainActivity extends AppCompatActivity {
         recycle();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        try {
+            select(1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void recycle() {
         if (imageView.getDrawable() != null) {
-            if (imageView.getDrawable() instanceof PixelateDrawable) {
-                Bitmap bitmap = ((PixelateDrawable) imageView.getDrawable()).getBitmap();
+            if (imageView.getDrawable() instanceof BitmapDrawable) {
+                Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
                 imageView.setImageBitmap(null);
                 if (bitmap != null && !bitmap.isRecycled()) {
                     bitmap.recycle();
@@ -82,12 +92,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void select(int index) {
+    private void select(int index) throws IOException {
         recycle();
         switch (index) {
             case 1:
-                imageView.setImageDrawable(new PixelateDrawable(
-                        getBitmapFromAsset(this, "officer.jpg"),
+                imageView.setImageBitmap(Pixelate.fromAsset(
+                        getAssets(), "officer.jpg",
                         new PixelateLayer.Builder(PixelateLayer.Shape.Diamond)
                                 .setResolution(48)
                                 .setSize(50)
@@ -104,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case 2:
-                imageView.setImageDrawable(new PixelateDrawable(
-                        getBitmapFromAsset(this, "stanley.jpg"),
+                imageView.setImageBitmap(Pixelate.fromAsset(
+                        getAssets(), "stanley.jpg",
                         new PixelateLayer.Builder(PixelateLayer.Shape.Square)
                                 .setResolution(32)
                                 .build(),
@@ -132,8 +142,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case 3:
-                imageView.setImageDrawable(new PixelateDrawable(
-                        getBitmapFromAsset(this, "take-my-portrait.jpg"),
+                imageView.setImageBitmap(Pixelate.fromAsset(
+                        getAssets(), "take-my-portrait.jpg",
                         new PixelateLayer.Builder(PixelateLayer.Shape.Square)
                                 .setResolution(48)
                                 .build(),
@@ -156,8 +166,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case 4:
-                imageView.setImageDrawable(new PixelateDrawable(
-                        getBitmapFromAsset(this, "tony.jpg"),
+                imageView.setImageBitmap(Pixelate.fromAsset(
+                        getAssets(), "tony.jpg",
                         new PixelateLayer.Builder(PixelateLayer.Shape.Circle)
                                 .setResolution(32)
                                 .setSize(6)
@@ -182,8 +192,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case 5:
-                imageView.setImageDrawable(new PixelateDrawable(
-                        getBitmapFromAsset(this, "wonder.jpg"),
+                imageView.setImageBitmap(Pixelate.fromAsset(
+                        getAssets(), "wonder.jpg",
                         new PixelateLayer.Builder(PixelateLayer.Shape.Diamond)
                                 .setResolution(24)
                                 .setSize(25)
@@ -200,8 +210,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case 6:
-                imageView.setImageDrawable(new PixelateDrawable(
-                        getBitmapFromAsset(this, "anita.jpg"),
+                imageView.setImageBitmap(Pixelate.fromAsset(
+                        getAssets(), "anita.jpg",
                         new PixelateLayer.Builder(PixelateLayer.Shape.Square)
                                 .setResolution(32)
                                 .build(),
@@ -224,8 +234,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case 7:
-                imageView.setImageDrawable(new PixelateDrawable(
-                        getBitmapFromAsset(this, "giraffe.jpg"),
+                imageView.setImageBitmap(Pixelate.fromAsset(
+                        getAssets(), "giraffe.jpg",
                         new PixelateLayer.Builder(PixelateLayer.Shape.Circle)
                                 .setResolution(24)
                                 .build(),
@@ -238,8 +248,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case 8:
-                imageView.setImageDrawable(new PixelateDrawable(
-                        getBitmapFromAsset(this, "kendra.jpg"),
+                imageView.setImageBitmap(Pixelate.fromAsset(
+                        getAssets(), "kendra.jpg",
                         new PixelateLayer.Builder(PixelateLayer.Shape.Square)
                                 .setResolution(48)
                                 .setOffset(24)
@@ -264,8 +274,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case 9:
-                imageView.setImageDrawable(new PixelateDrawable(
-                        getBitmapFromAsset(this, "gavin.jpg"),
+                imageView.setImageBitmap(Pixelate.fromAsset(
+                        getAssets(), "gavin.jpg",
                         new PixelateLayer.Builder(PixelateLayer.Shape.Square)
                                 .setResolution(48)
                                 .build(),
@@ -284,20 +294,5 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return;
         }
-
-    }
-
-    private static Bitmap getBitmapFromAsset(Context context, String filePath) {
-        AssetManager assetManager = context.getAssets();
-
-        InputStream istr;
-        Bitmap bitmap = null;
-        try {
-            istr = assetManager.open(filePath);
-            bitmap = BitmapFactory.decodeStream(istr);
-        } catch (IOException e) {
-            // handle exception
-        }
-        return bitmap;
     }
 }

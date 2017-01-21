@@ -23,28 +23,39 @@ dependencies {
 
 ## Usage
 
-Easiest way to use the library is to wrap plain old `Bitmap` into
+There are several `Pixelate.from*` methods in the
 [`PixelateDrawable`](close-pixelate/src/main/java/org/rainbowfish/closepixelate/PixelateDrawable.java)
-and provide it with required layers:
+class, allowing to create a pixelated bitmap from other bitmaps, resources, input streams, etc:
 
 ```java
-PixelateDrawable drawable = new PixelateDrawable(
+Bitmap pixelated = new Pixelate.fromBitmap(
         bitmap,
         new PixelateLayer.Builder(PixelateLayer.Shape.Square)
                 .setResolution(48)
                 .setSize(50)
                 .build()
-));
-imageView.setImageDrawable(drawable);
+);
 ```
 
-You can also create pixelated bitmaps and draw directly on the canvas.
-Check out convenience methods in
-[`Pixelate`](close-pixelate/src/main/java/org/rainbowfish/closepixelate/Pixelate.java).
+You can change output bitmap size, which can be used to conceal image upscaling artifacts:
+
+```java
+Bitmap big = new Pixelate.fromBitmap(
+        small,
+        1920,
+        1280,
+        new PixelateLayer.Builder(PixelateLayer.Shape.Circle)
+                .setResolution(10)
+                .setSize(10)
+                .build()
+);
+```
+
+You also can draw directly on a bitmap or on a canvas, using `Pixelate.render*` methods.
 
 ## Examples
 
-Here are simple examples of single-layer configurations:
+Here are the simplest examples of single-layer configurations:
 
 |                                               |                                                                  |
 |-----------------------------------------------|------------------------------------------------------------------|
