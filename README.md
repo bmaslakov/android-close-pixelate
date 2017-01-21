@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.rainbowfish:close-pixelate:1.0.1'
+    compile 'org.rainbowfish:close-pixelate:1.1.0'
 }
 ```
 
