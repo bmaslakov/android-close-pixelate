@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "1.1.0"         // Semver
+version = "1.2.0"         // Semver
 group = "org.rainbowfish" // Maven Group ID for the artifact
 def siteUrl = 'https://github.com/bmaslakov/android-close-pixelate'
 def gitUrl = 'https://github.com/bmaslakov/android-close-pixelate.git'

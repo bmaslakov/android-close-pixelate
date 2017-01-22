@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.rainbowfish:close-pixelate:1.1.0'
+    compile 'org.rainbowfish:close-pixelate:1.2.0'
 }
 ```
 
@@ -33,20 +33,6 @@ Bitmap pixelated = new Pixelate.fromBitmap(
         new PixelateLayer.Builder(PixelateLayer.Shape.Square)
                 .setResolution(48)
                 .setSize(50)
-                .build()
-);
-```
-
-You can change output bitmap size, which can be used to conceal image upscaling artifacts:
-
-```java
-Bitmap big = new Pixelate.fromBitmap(
-        small,
-        1920,
-        1280,
-        new PixelateLayer.Builder(PixelateLayer.Shape.Circle)
-                .setResolution(10)
-                .setSize(10)
                 .build()
 );
 ```
