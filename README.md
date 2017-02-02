@@ -55,7 +55,9 @@ Here are the simplest examples of single-layer configurations:
 
 Combining several layers, you can achieve more interesting effects:
 
-![Officer](screenshots/officer.jpg?raw=true)
+|                                                  |                                                  |
+|--------------------------------------------------|--------------------------------------------------|
+| ![Officer-old](screenshots/officer.jpg?raw=true) | ![Officer-new](screenshots/officer.png?raw=true) |
 
 ```java
 Pixelate.render(bitmap,
@@ -73,7 +75,9 @@ Pixelate.render(bitmap,
                 .build());
 ```
 
-![Stanley](screenshots/stanley.jpg?raw=true)
+|                                                  |                                                  |
+|--------------------------------------------------|--------------------------------------------------|
+| ![Stanley-old](screenshots/stanley.jpg?raw=true) | ![Stanley-new](screenshots/stanley.png?raw=true) |
 
 ```java
 Pixelate.render(bitmap,
@@ -101,7 +105,9 @@ Pixelate.render(bitmap,
                 .build());
 ```
 
-![Take my portrait](screenshots/take-my-portrait.jpg?raw=true)
+|                                                           |                                                           |
+|-----------------------------------------------------------|-----------------------------------------------------------|
+| ![Stanley-old](screenshots/take-my-portrait.jpg?raw=true) | ![Stanley-new](screenshots/take-my-portrait.png?raw=true) |
 
 ```java
 Pixelate.render(bitmap,
@@ -125,7 +131,9 @@ Pixelate.render(bitmap,
                 .build());
 ```
 
-![Tony](screenshots/tony.jpg?raw=true)
+|                                            |                                            |
+|--------------------------------------------|--------------------------------------------|
+| ![Tony-old](screenshots/tony.jpg?raw=true) | ![Tony-new](screenshots/tony.png?raw=true) |
 
 ```java
 Pixelate.render(bitmap,
@@ -151,7 +159,9 @@ Pixelate.render(bitmap,
                 .build());
 ```
 
-![Wonder](screenshots/wonder.jpg?raw=true)
+|                                                |                                                |
+|------------------------------------------------|------------------------------------------------|
+| ![Wonder-old](screenshots/wonder.jpg?raw=true) | ![Wonder-new](screenshots/wonder.png?raw=true) |
 
 ```java
 Pixelate.render(bitmap,
@@ -169,7 +179,9 @@ Pixelate.render(bitmap,
                 .build());
 ```
 
-![Anita](screenshots/anita.jpg?raw=true)
+|                                              |                                              |
+|----------------------------------------------|----------------------------------------------|
+| ![Anita-old](screenshots/anita.jpg?raw=true) | ![Anita-new](screenshots/anita.png?raw=true) |
 
 ```java
 Pixelate.render(bitmap,
@@ -193,7 +205,9 @@ Pixelate.render(bitmap,
                 .build());
 ```
 
-![Giraffe](screenshots/giraffe.jpg?raw=true)
+|                                                  |                                                  |
+|--------------------------------------------------|--------------------------------------------------|
+| ![Giraffe-old](screenshots/giraffe.jpg?raw=true) | ![Giraffe-new](screenshots/giraffe.png?raw=true) |
 
 ```java
 Pixelate.render(bitmap,
@@ -207,7 +221,9 @@ Pixelate.render(bitmap,
                 .build());
 ```
 
-![Kendra](screenshots/kendra.jpg?raw=true)
+|                                                |                                                |
+|------------------------------------------------|------------------------------------------------|
+| ![Kendra-old](screenshots/kendra.jpg?raw=true) | ![Kendra-new](screenshots/kendra.png?raw=true) |
 
 ```java
 Pixelate.render(bitmap,
@@ -233,7 +249,9 @@ Pixelate.render(bitmap,
                 .build());
 ```
 
-![Gavin](screenshots/gavin.jpg?raw=true)
+|                                              |                                              |
+|----------------------------------------------|----------------------------------------------|
+| ![Gavin-old](screenshots/gavin.jpg?raw=true) | ![Gavin-new](screenshots/gavin.png?raw=true) |
 
 ```java
 Pixelate.render(bitmap,
