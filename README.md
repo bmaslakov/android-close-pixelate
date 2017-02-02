@@ -45,7 +45,7 @@ Here are the simplest examples of single-layer configurations:
 
 |                                               |                                                                  |
 |-----------------------------------------------|------------------------------------------------------------------|
-| Original                                      | ![original](app/src/main/assets/jamie-hyneman.jpg?raw=true)      |
+| Original                                      | ![original](screenshots/jamie.jpg?raw=true)                      |
 | `resolution = 25, size = 25, shape = square`  | ![simple-hi-square](screenshots/simple-hi-square.png?raw=true)   |
 | `resolution = 10, size = 10, shape = square`  | ![simple-lo-square](screenshots/simple-lo-square.png?raw=true)   |
 | `resolution = 25, size = 25, shape = circle`  | ![simple-hi-circle](screenshots/simple-hi-circle.png?raw=true)   |
