@@ -39,21 +39,26 @@ Bitmap pixelated = new Pixelate.fromBitmap(
 
 You also can draw directly on a bitmap or on a canvas, using `Pixelate.render*` methods.
 
+There are three basic layer types:
+
+| Original                                 | Square                                                         | Diamond                                                          | Circle                                                         |
+|------------------------------------------|----------------------------------------------------------------|------------------------------------------------------------------|----------------------------------------------------------------|
+| ![jamie](screenshots/jamie.jpg?raw=true) | ![simple-lo-square](screenshots/simple-lo-square.png?raw=true) | ![simple-lo-diamond](screenshots/simple-lo-diamond.png?raw=true) | ![simple-lo-circle](screenshots/simple-lo-circle.png?raw=true) |
+
+You can change size, resolution, offset and alpha parameters of each layer:
+
+| resolution = 10                                                | resolution = 25                                                | resolution = 20, size = 50, alpha = 0.5          |
+|----------------------------------------------------------------|----------------------------------------------------------------|--------------------------------------------------|
+| ![simple-lo-square](screenshots/simple-lo-square.png?raw=true) | ![simple-hi-square](screenshots/simple-hi-square.png?raw=true) | ![jamie-new](screenshots/jamie-new.png?raw=true) |
+
+You can also combine several layers into one image:
+
+| square, resolution = 25                                        |       | diamond, resolution = 10                                         |       |                                                                  |
+|----------------------------------------------------------------|-------|------------------------------------------------------------------|-------|------------------------------------------------------------------|
+| ![simple-hi-square](screenshots/simple-hi-square.png?raw=true) | **+** | ![simple-lo-diamond](screenshots/simple-lo-diamond.png?raw=true) | **=** | ![sample-multilayer](screenshots/sample-multilayer.png?raw=true) |
+
+
 ## Examples
-
-Here are the simplest examples of single-layer configurations:
-
-|                                               |                                                                  |
-|-----------------------------------------------|------------------------------------------------------------------|
-| Original                                      | ![original](screenshots/jamie.jpg?raw=true)                      |
-| `resolution = 25, size = 25, shape = square`  | ![simple-hi-square](screenshots/simple-hi-square.png?raw=true)   |
-| `resolution = 10, size = 10, shape = square`  | ![simple-lo-square](screenshots/simple-lo-square.png?raw=true)   |
-| `resolution = 25, size = 25, shape = circle`  | ![simple-hi-circle](screenshots/simple-hi-circle.png?raw=true)   |
-| `resolution = 10, size = 10, shape = circle`  | ![simple-lo-circle](screenshots/simple-lo-circle.png?raw=true)   |
-| `resolution = 25, size = 25, shape = diamond` | ![simple-hi-diamond](screenshots/simple-hi-diamond.png?raw=true) |
-| `resolution = 10, size = 10, shape = diamond` | ![simple-lo-diamond](screenshots/simple-lo-diamond.png?raw=true) |
-
-Combining several layers, you can achieve more interesting effects:
 
 |                                                  |                                                  |
 |--------------------------------------------------|--------------------------------------------------|
