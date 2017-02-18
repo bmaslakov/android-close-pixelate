@@ -9,57 +9,6 @@ This is the android port of https://github.com/desandro/close-pixelate.
 
 [**close-pixelate.desandro.com**](http://close-pixelate.desandro.com)
 
-## Download
-
-The library is available at jcenter:
-
-```groovy
-repositories {
-    jcenter()
-}
-
-dependencies {
-    compile 'org.rainbowfish:close-pixelate:1.2.0'
-}
-```
-
-## Usage
-
-There are several `Pixelate.from*` methods in the
-[`PixelateDrawable`](close-pixelate/src/main/java/org/rainbowfish/closepixelate/PixelateDrawable.java)
-class, allowing to create a pixelated bitmap from other bitmaps, resources, input streams, etc:
-
-```java
-Bitmap pixelated = new Pixelate.fromBitmap(
-        bitmap,
-        new PixelateLayer.Builder(PixelateLayer.Shape.Square)
-                .setResolution(48)
-                .setSize(50)
-                .build()
-);
-```
-
-You also can draw directly on a bitmap or on a canvas, using `Pixelate.render*` methods.
-
-There are three basic layer types:
-
-| Original                                 | Square                                                         | Diamond                                                          | Circle                                                         |
-|------------------------------------------|----------------------------------------------------------------|------------------------------------------------------------------|----------------------------------------------------------------|
-| ![jamie](screenshots/jamie.jpg?raw=true) | ![simple-lo-square](screenshots/simple-lo-square.png?raw=true) | ![simple-lo-diamond](screenshots/simple-lo-diamond.png?raw=true) | ![simple-lo-circle](screenshots/simple-lo-circle.png?raw=true) |
-
-You can change size, resolution, offset and alpha parameters of each layer:
-
-| resolution = 10                                                | resolution = 25                                                | resolution = 20, size = 50, alpha = 0.5          |
-|----------------------------------------------------------------|----------------------------------------------------------------|--------------------------------------------------|
-| ![simple-lo-square](screenshots/simple-lo-square.png?raw=true) | ![simple-hi-square](screenshots/simple-hi-square.png?raw=true) | ![jamie-new](screenshots/jamie-new.png?raw=true) |
-
-You can also combine several layers into one image:
-
-| square, resolution = 25                                        |       | diamond, resolution = 10                                         |       |                                                                  |
-|----------------------------------------------------------------|-------|------------------------------------------------------------------|-------|------------------------------------------------------------------|
-| ![simple-hi-square](screenshots/simple-hi-square.png?raw=true) | **+** | ![simple-lo-diamond](screenshots/simple-lo-diamond.png?raw=true) | **=** | ![sample-multilayer](screenshots/sample-multilayer.png?raw=true) |
-
-
 ## Examples
 
 |                                                  |                                                  |
@@ -275,3 +224,53 @@ Pixelate.render(bitmap,
                 .setOffset(6)
                 .build());
 ```
+
+## Download
+
+The library is available at jcenter:
+
+```groovy
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.rainbowfish:close-pixelate:1.2.0'
+}
+```
+
+## Usage
+
+There are several `Pixelate.from*` methods in the
+[`PixelateDrawable`](close-pixelate/src/main/java/org/rainbowfish/closepixelate/PixelateDrawable.java)
+class, allowing to create a pixelated bitmap from other bitmaps, resources, input streams, etc:
+
+```java
+Bitmap pixelated = new Pixelate.fromBitmap(
+        bitmap,
+        new PixelateLayer.Builder(PixelateLayer.Shape.Square)
+                .setResolution(48)
+                .setSize(50)
+                .build()
+);
+```
+
+You also can draw directly on a bitmap or on a canvas, using `Pixelate.render*` methods.
+
+There are three basic layer types:
+
+| Original                                 | Square                                                         | Diamond                                                          | Circle                                                         |
+|------------------------------------------|----------------------------------------------------------------|------------------------------------------------------------------|----------------------------------------------------------------|
+| ![jamie](screenshots/jamie.jpg?raw=true) | ![simple-lo-square](screenshots/simple-lo-square.png?raw=true) | ![simple-lo-diamond](screenshots/simple-lo-diamond.png?raw=true) | ![simple-lo-circle](screenshots/simple-lo-circle.png?raw=true) |
+
+You can change size, resolution, offset and alpha parameters of each layer:
+
+| resolution = 10                                                | resolution = 25                                                | resolution = 20, size = 50, alpha = 0.5          |
+|----------------------------------------------------------------|----------------------------------------------------------------|--------------------------------------------------|
+| ![simple-lo-square](screenshots/simple-lo-square.png?raw=true) | ![simple-hi-square](screenshots/simple-hi-square.png?raw=true) | ![jamie-new](screenshots/jamie-new.png?raw=true) |
+
+You can also combine several layers into one image:
+
+| square, resolution = 25                                        |       | diamond, resolution = 10                                         |       |                                                                  |
+|----------------------------------------------------------------|-------|------------------------------------------------------------------|-------|------------------------------------------------------------------|
+| ![simple-hi-square](screenshots/simple-hi-square.png?raw=true) | **+** | ![simple-lo-diamond](screenshots/simple-lo-diamond.png?raw=true) | **=** | ![sample-multilayer](screenshots/sample-multilayer.png?raw=true) |
