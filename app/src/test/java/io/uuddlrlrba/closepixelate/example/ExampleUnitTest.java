@@ -1,4 +1,4 @@
-package org.rainbowfish.closepixelate.example;
+package io.uuddlrlrba.closepixelate.example;
 
 import org.junit.Test;
 

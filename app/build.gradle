@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "24.0.2"
     defaultConfig {
-        applicationId "org.rainbowfish.closepixelate.example"
+        applicationId "io.uuddlrlrba.closepixelate.example"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1

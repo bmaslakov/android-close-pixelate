@@ -1,6 +1,6 @@
 # android-close-pixelate
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![Bintray](https://img.shields.io/bintray/v/bmaslakov/maven/org.rainbowfish%3Aclose-pixelate.svg)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![Bintray](https://img.shields.io/bintray/v/bmaslakov/maven/io.uuddlrlrba%3Aclose-pixelate.svg)]()
 
 Android close pixelate allows you easily create and combine various pixelation effects.
 The library is super lightweight (3 classes, 8KB) and easy to use.
@@ -235,14 +235,14 @@ repositories {
 }
 
 dependencies {
-    compile 'org.rainbowfish:close-pixelate:1.2.0'
+    compile 'io.uuddlrlrba:close-pixelate:1.2.0'
 }
 ```
 
 ## Usage
 
 There are several `Pixelate.from*` methods in the
-[`PixelateDrawable`](close-pixelate/src/main/java/org/rainbowfish/closepixelate/PixelateDrawable.java)
+[`Pixelate`](close-pixelate/src/main/java/io/uuddlrlrba/closepixelate/Pixelate.java)
 class, allowing to create a pixelated bitmap from other bitmaps, resources, input streams, etc:
 
 ```java

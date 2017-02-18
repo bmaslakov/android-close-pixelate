@@ -12,7 +12,7 @@
  * Licensed under MIT license
  */
 
-package org.rainbowfish.closepixelate.example;
+package io.uuddlrlrba.closepixelate.example;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -24,10 +24,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
-import org.rainbowfish.closepixelate.Pixelate;
-import org.rainbowfish.closepixelate.PixelateLayer;
-
 import java.io.IOException;
+
+import io.uuddlrlrba.closepixelate.Pixelate;
+import io.uuddlrlrba.closepixelate.PixelateLayer;
 
 public class MainActivity extends AppCompatActivity {
     private ImageView imageView;

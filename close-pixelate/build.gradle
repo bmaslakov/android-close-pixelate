@@ -2,8 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "1.2.0"         // Semver
-group = "org.rainbowfish" // Maven Group ID for the artifact
+version = "1.2.0"       // Semver
+group = "io.uuddlrlrba" // Maven Group ID for the artifact
 def siteUrl = 'https://github.com/bmaslakov/android-close-pixelate'
 def gitUrl = 'https://github.com/bmaslakov/android-close-pixelate.git'
 
@@ -73,7 +73,7 @@ bintray {
     override = true
     pkg {
         repo = 'maven'
-        name = 'org.rainbowfish:close-pixelate'
+        name = 'io.uuddlrlrba:close-pixelate'
         licenses = ['MIT']
         websiteUrl = siteUrl
         vcsUrl = gitUrl

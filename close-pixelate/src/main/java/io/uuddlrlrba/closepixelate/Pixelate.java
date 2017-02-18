@@ -12,7 +12,7 @@
  * Licensed under MIT license
  */
 
-package org.rainbowfish.closepixelate;
+package io.uuddlrlrba.closepixelate;
 
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;

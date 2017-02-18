@@ -1,4 +1,4 @@
-package org.rainbowfish.closepixelate.example;
+package io.uuddlrlrba.closepixelate;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("org.rainbowfish.closepixelate", appContext.getPackageName());
+        assertEquals("io.uuddlrlrba.closepixelate.test", appContext.getPackageName());
     }
 }
