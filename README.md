@@ -1,5 +1,7 @@
 # android-close-pixelate
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![Bintray](https://img.shields.io/bintray/v/bmaslakov/maven/org.rainbowfish%3Aclose-pixelate.svg)]()
+
 Android close pixelate allows you easily create and combine various pixelation effects.
 The library is super lightweight (3 classes, 8KB) and easy to use.
 
