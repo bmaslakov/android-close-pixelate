@@ -2,12 +2,11 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![Bintray](https://img.shields.io/bintray/v/bmaslakov/maven/io.uuddlrlrba%3Aclose-pixelate.svg)]()
 
-Android close pixelate allows you easily create and combine various pixelation effects.
-The library is super lightweight (3 classes, 8KB) and easy to use.
+This simple library allows you to easily create and combine various pixelation effects.
 
-This is the android port of https://github.com/desandro/close-pixelate.
+Based on a wonderful script by David DeSandro: [close-pixelate.desandro.com](http://close-pixelate.desandro.com).
 
-[**close-pixelate.desandro.com**](http://close-pixelate.desandro.com)
+You may be also be interested in the [iOS/Swift version of the library](https://github.com/bmaslakov/cocoa-close-pixelate/tree/master/ClosePixelate).
 
 ## Examples
 
